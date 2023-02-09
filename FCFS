@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+	int p[10],bt[10],wt[10],tat[10],n,w=0,i=0;
+	float avg1=0,avg2=0;
+	printf("\nenter the no of process : ");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		printf("\nnenter the burst time of process %d : ",i+1);
+		scanf("%d",&bt[i]);
+		wt[i]=w;
+		tat[i]=bt[i]+w;
+		w=tat[i];
+		avg1+=wt[i];
+		avg2+=tat[i];
+	}
+	for(i=0;i<n;i++)
+		printf("\np%d\tBT : %d\tWT : %d\tTAT : %d",i+1,bt[i],wt[i],tat[i]);
+	printf("\naverage waiting time : %.2f",avg1/n);
+	printf("\naverage turn around time : %.2f",avg2/n);
+}
