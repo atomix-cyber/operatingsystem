@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main()
+{
+	int a[10],i,n,j,pg=4,ch[10],c=0,ph=0,t=0;
+	printf("\nenter the no of references : ");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		printf("\nenter the reference %d : ",i+1);
+		scanf("%d",&a[i]);
+		if(i<4)
+		ch[i]=a[i];
+	}
+	for(i=4;i<n;i++){
+		c=0;
+		for(j=0;j<4;j++){
+			if(a[i]==ch[j])
+			c=1;
+		}
+		if(c==0){
+			if(t==4)
+			t=0;
+			ch[t]=a[i];
+			printf("\npg: %d",i-4);
+			pg++;
+			t++;
+		}
+		else
+		ph++;
+	}
+	printf("\npage faults : %d",pg);
+	printf("\npage hit : %d",ph);
+}
