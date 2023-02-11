@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *f1,*f2;
+	char n[10],c;
+	printf("\nenter the file name to open : ");
+	scanf("%s",&n);
+	f1=fopen(n,"r");
+	if(f1==NULL){
+		printf("\nfile cannot be open...");
+		exit(0);
+	}
+	printf("\nenter the file name to write : ");
+	scanf("%s",&n);
+	f2=fopen(n,"w");
+	if(f2==NULL){
+		printf("\nfile cannot be open...");
+		exit(0);
+	}
+	c=fgetc(f1);
+	while(c!=EOF){
+		fputc(c,f2);
+		c=fgetc(f1);
+	}
+	printf("\nsuccessfully copied !!!!");
+	fclose(f1);
+	fclose(f2);
+	
+}
